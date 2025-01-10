@@ -1,19 +1,47 @@
-#include "point.h"
+#include "fdf.h"
+#include <stdio.h>
 
 
-void set_point(t_point * p,int x,int y)
+void set_2d(t_point2d * p,int x,int y)
 {
-    p->x = x;
-    p->y = y;
+    p->x = x ;
+    p->y = y ;
 }
 
-double distance(t_point* a,t_point* b)
+void set_3d(t_point3d * p,int x,int y,int z)
 {
-    int dx;
-    int dy;
+    p->x = x; 
+    p->y = y; 
+    p->z = z;
+}
+
+double dist_2d(t_point2d* a,t_point2d* b)
+{
+    double dx;
+    double dy;
 
     dx = a->x - b->x;
     dy = a->y - b->y;
 
     return sqrt(dx*dx + dy*dy);
+}
+
+double dist_3d(t_point3d* a,t_point3d* b)
+{
+    double dx;
+    double dy;
+    double dz;
+
+    dx = a->x - b->x;
+    dy = a->y - b->y;
+    dz = a->z - b->z;
+
+    return sqrt(dx*dx + dy*dy + dz*dz);
+}
+
+
+void print_point(t_point2d *p,char * label)
+{
+    printf("%s : (%0.2f,%0.2f)\n",label,p->x,p->y);
+
 }

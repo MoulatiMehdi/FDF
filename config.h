@@ -1,0 +1,14 @@
+
+#ifndef CONFIG_H
+
+#define CONFIG_H
+
+#define DEFAULT_HEIGHT 1080
+#define DEFAULT_MIN_HEIGHT 0
+#define DEFAULT_MAX_HEIGHT 100
+
+#define DEFAULT_WIDTH 1920
+#define DEFAULT_MIN_WIDTH 0
+#define DEFAULT_MAX_WIDTH 100
+
+#endif
