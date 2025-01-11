@@ -1,8 +1,15 @@
 #include "fdf.h"
 
-
-void draw_pixel(t_data *data, int x, int y, int color) { char *dst;
-
+int is_valid_coord(t_data* data,int x,int y)
+{
+    return x >= 0 && y >= 0 && x <= data->width && y <= data->height;
+     
+}
+void draw_pixel(t_data *data, int x, int y, int color) { 
+    char *dst;
+    
+    if(!is_valid_coord(data, x, y))
+        return ; 
     dst = data->addr + (y * data->line_length + x * (data->bits_per_pixel / 8));
     *(unsigned int *)dst = color;
 }

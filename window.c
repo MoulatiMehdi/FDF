@@ -35,6 +35,8 @@ t_graphic * new_window(char *title, int width, int height)
         width = DEFAULT_WIDTH;
 
     session->window = mlx_new_window(session->mlx, width, height, title);
+    session->height = height;
+    session->width = width;
     mlx_key_hook(session->window, handle_keys, session);
     mlx_hook(session->window, 17, 0, close_window, session);
 
@@ -46,6 +48,8 @@ void new_image(t_graphic*session,t_data * data,int width,int height)
     data->img = mlx_new_image(session->mlx, width, height);
     data->addr = mlx_get_data_addr(data->img, &data->bits_per_pixel,
                                    &data->line_length, &data->endian);
+    data->width = width;
+    data->height = height;
 }
 
 int draw_image(t_graphic* session,t_data * data,int x,int y)

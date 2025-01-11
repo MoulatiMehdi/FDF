@@ -28,6 +28,8 @@ typedef struct s_point3d
 typedef struct s_graphic {
     void *mlx;
     void *window;
+    int height;
+    int width;
 } t_graphic;
 
 typedef struct s_data {
@@ -36,7 +38,16 @@ typedef struct s_data {
     int bits_per_pixel;
     int line_length;
     int endian;
+    int height;
+    int width;
 } t_data;
+
+typedef struct s_cube
+{
+    t_point3d *center;
+    int side;
+    t_point3d points[8];
+} t_cube;
 
 
 
@@ -58,5 +69,7 @@ void fill_circle(t_data * data,t_point2d *center,int radius,int color);
 void draw_grid(t_data* data,t_point2d* origin,int width,int height);
 void print_point(t_point2d *p,char * label);
 //void to_isometric(t_point2d *m ,t_point3d * p,double angle);
-void to_isometric(t_point2d *m ,t_point3d * p,double angle,int shift);
+void to_isometric(t_point2d *m ,t_point3d * p,t_point2d *shift);
+void rotate_z(t_point2d *from,t_point2d * to,double angle,t_point2d *shift);
+void new_cube(t_cube * cube,t_point3d *center, int side,double angle);
 #endif
